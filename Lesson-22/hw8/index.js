@@ -1,8 +1,12 @@
-const checkbox = document.querySelector('.task-status');
+const checkBox = document.querySelector('.task-status');
 
-function checker() {
+const foo = (event) => {
     const getEvent = event.target;
-    getEvent.checked ? console.log(true) : console.log(false);
-}
+    if (getEvent.checked) {
+        console.log(true);
+    } else {
+        console.log(false);
+    }
+};
 
-checkbox.addEventListener('change', checker);
+checkBox.addEventListener('change', foo);
