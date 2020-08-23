@@ -27,4 +27,4 @@ const myDate = getDiff(startNewDate, endNewDate);
 
 console.log(myDate);
 
-// export { getDiff };
+export { getDiff };
