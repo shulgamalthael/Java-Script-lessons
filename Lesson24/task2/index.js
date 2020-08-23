@@ -1,0 +1,10 @@
+const formatter = new Intl.DateTimeFormat('en', {
+    timeZone: 'UTC',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+});
+
+export const getDreenwichTime = date => formatter.format(date);
+
+// console.log(getDreenwichTime(new Date));
