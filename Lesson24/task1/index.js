@@ -1,13 +1,14 @@
-export const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Set', 'Thu', 'Fri'];
+const weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'St'];
 
-const getdayOfWeek = (date, days) => {
-
+export const dayOfWeek = (date, days) => {
     const day = new Date(date).getDate();
     const dateInFuture = new Date(date).setDate(day + days);
 
     return weekDays[new Date(dateInFuture).getDay()];
-}
+};
 
-// const result = weekDays[getdayOfWeek(new Date(2019, 0, 3), 14)];
+// const result = dayOfWeek(new Date(2019, 0, 1), 14);
 
 // console.log(result);
+
+// console.log(weekDays);
