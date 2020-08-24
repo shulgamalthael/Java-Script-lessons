@@ -1,26 +1,34 @@
+const formatMiliSeconds = mSeconds => {
+    if (mSeconds < 10) {
+        return `0${mSeconds}`;
+    }
+    return mSeconds;
+};
+
 const formatSeconds = seconds => {
     if (seconds < 10) {
         return `0${seconds}`;
     }
     return seconds;
-}
+};
 
 const formatMinutes = minutes => {
     if (minutes < 10) {
         return `0${minutes}`;
     }
     return minutes;
-}
+};
 
 const formatHours = hours => {
     if (hours < 10) {
         return `0${hours}`;
     }
     return hours;
-}
+};
 
 const timer = {
 
+    miliSecondsPassed: 0,
     secondsPassed: 0,
     minsPassed: 0,
     hoursPassed: 0,
@@ -30,26 +38,35 @@ const timer = {
     startTimer() {
         this.intervalId = setInterval(() => {
 
-            this.secondsPassed += 1;
-            //console.log(this.secondsPassed);
+            // console.log(this.getTime());
+            this.miliSecondsPassed += 1;
+            // console.log('Sec: ' +   this.miliSecondsPassed);
+
+            if( this.miliSecondsPassed === 60 ) {
+                this.miliSecondsPassed = 0;
+                this.secondsPassed += 1;
+                // console.log(this.getTime());
+            }
 
             if( this.secondsPassed === 60 ) {
                 this.secondsPassed = 0;
                 this.minsPassed += 1;
-                //console.log(this.minsPassed);
+                // console.log('Mins: ' + this.minsPassed);
+                // console.log(this.getTime());
             }
 
             if( this.minsPassed === 60 ) {
                 this.minsPassed = 0;
                 this.hoursPassed += 1;
                 // console.log('Hours: ' + this.hoursPassed);
+                // console.log(this.getTime())
             }
 
             if( this.hoursPassed === 24 ) {
                 this.hoursPassed = 0;
             }
 
-        }, 1000);
+        }, 10);
     },
 
     stopTimer() {
@@ -58,10 +75,11 @@ const timer = {
     },
 
     getTime() {
+        const formattedMiliSeconds = formatMiliSeconds(this.miliSecondsPassed);
         const formattedSeconds = formatSeconds(this.secondsPassed);
         const formattedMinutes = formatMinutes(this.minsPassed);
         const formattedHours = formatHours(this.hoursPassed);
-        const result = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+        const result = `${formattedHours}:${formattedMinutes}:${formattedSeconds}:${formattedMiliSeconds}`;
         return result;
     },
 
@@ -74,4 +92,4 @@ const timer = {
 
 timer.startTimer();
 timer.getTime();
-console.log(timer.getTime());
+console.log(timer.getTime(timer));
