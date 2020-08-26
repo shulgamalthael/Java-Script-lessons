@@ -1,10 +1,29 @@
-import { onCreateTask } from './createTask';
-import { onToggleTask } from './updateTask';
+import { renderTasks } from './renderer';
+import { getItem, setItem } from './storage';
 
-export const initTodoListHandlers = () => {
-    const createBtnElem = document.querySelector('.create-task-btn');
-    createBtnElem.addEventListener('click', onCreateTask);
+export const onToggleTask = e => {
+    const isCheckbox = e.target.classList.contains('list__item-checkbox');
 
-    const todoListElem = document.querySelector('.list');
-    todoListElem.addEventListener('click', onToggleTask);
+    if (!isCheckbox) {
+        return;
+    }
+
+    const tasksList = getItem('tasksList');
+    const newTasksList = tasksList
+        .map(tasks => {
+            if (tasks.id === e.target.dataset.id) {
+                const done = e.target.checked;
+                return {
+                    ...tasks,
+                    done,
+                    endEvent: done
+                        ? new Date().toISOString()
+                        : null
+                };
+            }
+            return tasks;
+        });
+    setItem('tasksList', newTasksList);
+
+    renderTasks();
 };
