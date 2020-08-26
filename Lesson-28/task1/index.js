@@ -35,4 +35,6 @@ const calc = initialValue => {
 
 const result = calc(3).add(2).mult(4).div(10).substract(5).result(); // -3
 
-console.log(result);
+// console.log(result);
+
+export { calc };
