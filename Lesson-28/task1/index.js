@@ -1,7 +1,6 @@
+const calc = initlValue => {
 
-const calc = initialValue => {
-
-    let result = initialValue;
+    let result = initlValue;
 
     const calculator = {
         add(value) {
