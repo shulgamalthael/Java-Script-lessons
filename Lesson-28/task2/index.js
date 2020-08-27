@@ -1,9 +1,14 @@
+//Массив любимых каталогов.
 const favorites = [ 'id-6', 'id-17' ];
 
+
+//Родительское дерево каталогов.
 const tree = {
+    //Каталог 1.1 , имеет подкаталоги - 2.1Food , 2.2Vehicles
     id: 'id-1',
     name: 'Products',
     nodes: [
+        //Каталог 2.1 имеет подкаталог 3.1Drinks.
         {
             id: 'id-2',
             name: 'Food',
@@ -23,6 +28,8 @@ const tree = {
     ],
 };
 
+
+//Функция проверки на любимые каталоги.
 export const markFavorites = (tree, favorites) => {
     const isFavorite = favorites.includes(tree.id);
 
@@ -33,6 +40,8 @@ export const markFavorites = (tree, favorites) => {
     }
 }
 
+
+//Результирующая переменная.
 const result = markFavorites(tree, favorites);
 
 console.log(result);
