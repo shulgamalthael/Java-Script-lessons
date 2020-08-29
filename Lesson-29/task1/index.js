@@ -1,5 +1,4 @@
-export const addImage = (imgSrc, callback) => {
-
+const addImage = (imgSrc, callback) => {
     const imgElem = document.createElement('img');
     imgElem.setAttribute('alt', 'My Photo');
     imgElem.src = imgSrc;
@@ -9,24 +8,28 @@ export const addImage = (imgSrc, callback) => {
 
     const onImageLoaded = () => {
         const { width, height } = imgElem;
-        callback(null, {width, height});
+        // console.log(imgElem);
+
+        callback(null, { width, height });
     };
 
     imgElem.addEventListener('load', onImageLoaded);
-    imgElem.addEventListener('error', () => callback('image load failed'));
 
-}
+    imgElem.addEventListener('error', () => callback('Image load failed'))
+};
 
-//callack example
-const onImageLoaded = (error, imgElem) => {
+// const imgSrc = 'https://server.com/image.png';
+
+const onImageLoaded = (error, data) => {
     if (error) {
         console.log(error);
         return;
     }
-    const { width, height } = imgElem;
+    const { width, height } = data;
     const sizeElem = document.querySelector('.image-size');
-    sizeElem.textContent = `${width} x ${height}`;
-}
+    sizeElem.textContent = `${width}: x ${height}`;
+};
 
-//test call
-addImage("https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg", onImageLoaded);
+// addImage(imgSrc, onImageLoaded);
+
+export { addImage };
