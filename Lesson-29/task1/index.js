@@ -1,4 +1,3 @@
-imgElem.addEventListener('error', () => ('Image load failed'));
 export const addImage = (imgSrc, callback) => {
   const imgElem = document.createElement('img');
   imgElem.setAttribute('alt', 'My photo');
