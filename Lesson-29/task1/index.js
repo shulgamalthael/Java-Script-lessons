@@ -1,27 +1,30 @@
-function addImage(imgSrc, callback) {
+imgElem.addEventListener('error', () => ('Image load failed'));
+export const addImage = (imgSrc, callback) => {
   const imgElem = document.createElement('img');
-  imgElem.setAttribute('alt', 'My Photo');
+  imgElem.setAttribute('alt', 'My photo');
   imgElem.src = imgSrc;
-  const containerElem = document.querySelector('.page');
+  const containerElem = document.querySelector('.page')
   containerElem.append(imgElem);
 
-  function onImageLoaded() {
-      const { width, height } = imgElem;
-      callback(null, { width, height });
-  };
-
-  imgElem.addEventListener('load', onImageLoaded);
-  imgElem.addEventListener('error', () => callback('Image load failed'));
-};
-
-function onImageLoaded(error, data) {
-  if (error) {
-      console.log(error);
-      return;
+  const onImageLoaded = () => {
+    const { width, height } = imgElem;
+    callback(null,{ width, height });
   }
-  const { width, height } = data;
-  const sizeElem = document.querySelector('.image-size');
-  sizeElem.textContent = `${width} x ${height}`;
-};
+  
+  imgElem.addEventListener('load', onImageLoaded);
 
-export { addImage };
+  imgElem.addEventListener('error', () => ('Image load failed'));
+
+}
+
+const imgSrc = 'https://server.com/image.png';
+
+const onImageLoaded = (error, data) => {
+  if(error){
+    console.log(error);
+    return;
+  }
+  const {width, height} = data;
+  const sizeElem = document.querySelector('.image-size');
+  sizeElem.textContent = ${width} x ${height}
+}
