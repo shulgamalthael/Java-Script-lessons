@@ -1,34 +1,22 @@
-//add image on the page and show it sizes.
-
-const addImage = (imgSrc, callback) => {
-
+export function addImage(imgSrc, callback) {
     const imgElem = document.createElement('img');
-    imgElem.setAttribute('Alt', 'My Photo');
-    imgElem.src = imgSrc;
+    imgElem.setAttribute('alt', 'My photo');
 
+    imgElem.src = imgSrc;
     const containerElem = document.querySelector('.page');
     containerElem.append(imgElem);
 
-    const onImageLoaded = () => {
+    function onImageLoaded() {
         const { width, height } = imgElem;
         callback(null, { width, height });
-    }
+    };
 
-    //image is load
     imgElem.addEventListener('load', onImageLoaded);
+    imgElem.addEventListener('error', () => callback('Image load failed'));
+}
 
-    imgElem.addEventListener('error', () => callback('Image load is failed'));
-    //imgElem.width();
-    //imgElem.height();
-    // const { width, height } = imgElem;
-
-};
-
-const imgSrc = "https://server.com/image.png";
-
-const onImageLoaded = (error, data) => {
-    
-    if(error) {
+function onImageLoaded(error, data) {
+    if (error) {
         console.log(error);
         return;
     }
@@ -37,6 +25,3 @@ const onImageLoaded = (error, data) => {
     const sizeElem = document.querySelector('.image-size');
     sizeElem.textContent = `${width} x ${height}`;
 }
-addImage(imgSrc, onImageLoaded);
-
-export { addImage };
