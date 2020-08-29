@@ -17,14 +17,14 @@ const addImage = (imgSrc, callback) => {
     //image is load
     imgElem.addEventListener('load', onImageLoaded);
 
-    imgElem.addEventListener('error', () => callback('Image Load Failed'));
+    imgElem.addEventListener('error', () => callback('Image load is failed'));
     //imgElem.width();
     //imgElem.height();
     // const { width, height } = imgElem;
 
 };
 
-const imgSrc = "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg";
+const imgSrc = "https://server.com/image.png";
 
 const onImageLoaded = (error, data) => {
     
