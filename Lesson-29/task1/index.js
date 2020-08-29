@@ -18,6 +18,8 @@ const addImage = (imgSrc, callback) => {
     imgElem.addEventListener('error', () => callback('Image load failed'))
 };
 
+
+const imgSrc = ("https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg", onImageLoaded);
 // const imgSrc = 'https://server.com/image.png';
 
 const onImageLoaded = (error, data) => {
@@ -30,6 +32,7 @@ const onImageLoaded = (error, data) => {
     sizeElem.textContent = `${width}: x ${height}`;
 };
 
+//addImage("https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg", onImageLoaded);
 addImage(imgSrc, onImageLoaded);
 
 export { addImage };
