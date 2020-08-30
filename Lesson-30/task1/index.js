@@ -14,7 +14,7 @@ const addImage = imgSrc => {
 
         imgElem.addEventListener('load', onImageLoaded);
 
-        imgElem.addEventListener('error', () => ('Image load failed')))
+        imgElem.addEventListener('error', () => ('Image load failed'));
     });
     return p;
 };
