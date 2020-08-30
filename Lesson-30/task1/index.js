@@ -9,12 +9,12 @@ const addImage = imgSrc => {
 
         const onImageLoaded = () => {
             const { width, height } = imgElem;
-            resolveCb({ width, height });
+            // resolveCb({ width, height });
         };
 
         imgElem.addEventListener('load', onImageLoaded);
 
-        imgElem.addEventListener('error', () => rejectCb(new Error('Image load failed')))
+        imgElem.addEventListener('error', () => ('Image load failed')))
     });
     return p;
 };
