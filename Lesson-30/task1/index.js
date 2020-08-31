@@ -9,12 +9,12 @@ const addImage = imgSrc => {
 
         const onImageLoaded = () => {
             const { width, height } = imgElem;
-            // resolveCb({ width, height });
+            resolveCb({ width, height });
         };
 
         imgElem.addEventListener('load', onImageLoaded);
 
-        imgElem.addEventListener('error', () => ('Image load failed'));
+        imgElem.addEventListener('error', () => rejectCb('Image load is failed'));
     });
     return p;
 };
@@ -23,7 +23,7 @@ const imgSrc = 'https://server.com/image.png';
 
 const resultPromise = addImage(imgSrc);
 
-resultPromise(error => console.log(error));
+resultPromise.catch(error => console.log(error));
 
 
 export { addImage };
