@@ -4,12 +4,10 @@ const servers = [
     'https://server.com/au',
 ];
 
-const getRandomNumber = (from, to) => {
+const getRandomNumber = (from, to) =>
     from + Math.random() * (to - from);
-}
 
 const request = url => new Promise(resolve => {
-
     const randomDelay = getRandomNumber(1000, 3000);
     setTimeout (() => {
         resolve({ 
