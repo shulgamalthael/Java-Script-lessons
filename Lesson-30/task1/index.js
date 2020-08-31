@@ -23,7 +23,7 @@ const imgSrc = 'https://server.com/image.png';
 
 const resultPromise = addImage(imgSrc);
 
-resultPromise.catch(error => console.log(error));
+resultPromise(error => console.log(error));
 
 
 export { addImage };
