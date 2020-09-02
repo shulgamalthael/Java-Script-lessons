@@ -15,3 +15,5 @@ const getTaskById = taskId => {
         .then(response => response.json())
         .then(result => console.log(result));
 }
+
+export { getTaskById, getTaskList };
