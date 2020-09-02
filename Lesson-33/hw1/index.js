@@ -1,19 +1,21 @@
 const baseUrl = 'https://5e5cf5eb97d2ea0014796f01.mockapi.io/api/v1/tasks';
 
 /* getTasksList code here */
-
-const getTaskList = () => {
-    fetch(baseUrl)
+const getTasksList = () => {
+    return fetch(baseUrl)
         .then(response => response.json())
         .then(result => console.log(result));
-}
+};
 
 /* getTaskById code here */
 
-const getTaskById = taskId => {
-    return fetch(`https://5e5cf5eb97d2ea0014796f01.mockapi.io/api/v1/tasks/${taskId}`)
+function getTaskById(tasksId) {
+    // const { id } = baseUrl;
+    return fetch(`https://5e5cf5eb97d2ea0014796f01.mockapi.io/api/v1/tasks/${tasksId}`)
         .then(response => response.json())
-        .then(result => console.log(result));
-}
+        .then(result => console.log(result))
+};
 
-export { getTaskById, getTaskList };
+// getTaskById(2);
+
+export { getTasksList, getTaskById };
