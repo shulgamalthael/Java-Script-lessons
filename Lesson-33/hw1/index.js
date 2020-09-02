@@ -16,4 +16,6 @@ const getTaskById = taskId => {
         .then(result => console.log(result));
 }
 
-getTaskById('1');
+getTaskById('36');
+
+getTaskList();
