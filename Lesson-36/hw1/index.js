@@ -4,7 +4,7 @@ async function getUsersBlogs(users) {
     console.log(users)
 
     try {
-        const getDataUsers = await users.forEach(userId => {
+        const getDataUsers = await users.map(userId => {
             fetch(`${dataUrl}/${userId}`)
             console.log(dataUrl)
             console.log(userId)
