@@ -2,26 +2,26 @@ window.addEventListener("error", function onUnhandledError (err) {
     console.error("error", err.message);
 });
 
-let userParsingResult;
+let userParsingResult = '{"name": "Ali"}';
 
 try {
-    const user = JSON.parse(/* валидный JSON c данными пользователя */);
+    const user = JSON.parse(userParsingResult);
     console.log("User data: ", user);
     userParsingResult = "success";
 } catch(e) {
-    userParsingResult = "success";
+    userParsingResult = "error";
 } finally {
     console.log(`User parsing finished with ${userParsingResult}`);
 }
 
-let productParsingResult;
+let productParsingResult = '{"name": "Leo"';
 
 try {
-    const product = JSON.parse(/* сломанный JSON c данными о продукте */);
+    const product = JSON.parse(productParsingResult);
     console.log("Product data: ", product);
     productParsingResult = "success";
 } catch(e) {
     productParsingResult = "error";
 } finally {
     console.log(`Product parsing finished with ${productParsingResult}`);
-}
+} 
