@@ -1,38 +1,21 @@
-const dataUrl = `https://api.github.com/users`;
-
-async function getUsersBlogs(users) {
-    console.log(users)
-
+export const getUsersBlogs = async USERID => {
     try {
-        const getDataUsers = await users.map(userId => {
-            fetch(`${dataUrl}/${userId}`)
-            console.log(dataUrl)
-            console.log(userId)
-                .then(response => {
-                    if (response.ok) {
-                        console.log(response.json());
-                    }
-                })
-            throw new Error('Failed to fetch users blog');
-        })
-            .then(userBlog => userBlog.blog);
-
-
-        const dataUser = Promise.all(getDataUsers);
-        console.log(dataUser)
-        return dataUser;
+        return Promise.all(USERID.map(user =>
+            fetchUsers(user)
+            .then(userData => userData.blog)
+        ));
+    } catch (error) {
+        console.error(error);
     }
-    catch (error) {
-        throw new Error(error);
+};
+
+const fetchUsers = async users => {
+    const answer = await fetch(`https://api.github.com/users/${users}`);
+
+    if (answer.ok) {
+        return answer.json();
     }
 };
 
 getUsersBlogs(['google', 'facebook', 'gaearon'])
-
-// getUsersBlogs(['google'])
-    // .then(response => response.json())
-    // .then(data => console.log(data))
-
-// Promise.all([getUsersBlogs(['google']), getUsersBlogs(['facebook']), getUsersBlogs(['gaearon'])])
-
-export { getUsersBlogs };
+    .then(linksList => console.log(linksList));
